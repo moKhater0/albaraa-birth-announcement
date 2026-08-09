@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="18" fill="#CDEAF4"/>
+  <circle cx="46" cy="17" r="9" fill="#F7DEA1"/>
+  <path d="M8 46c7-10 16-13 26-8 7-10 20-8 24 2 4 1 6 4 6 8H8v-2Z" fill="#FFFEFA"/>
+  <text x="32" y="38" text-anchor="middle" font-size="27" font-family="serif" font-weight="700" fill="#344A45">ب</text>
+</svg>
