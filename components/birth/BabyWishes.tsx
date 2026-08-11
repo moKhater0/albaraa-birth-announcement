@@ -102,8 +102,7 @@ export function BabyWishes() {
     setSubmitting(true);
     setStatus("");
     try {
-      const inserted = await insertWish({ name: cleanAuthor, message: cleanMessage });
-      setWishes((current) => current.some((item) => item.id === inserted.id) ? current : [inserted, ...current].slice(0, 50));
+      await insertWish({ name: cleanAuthor, message: cleanMessage });
       setLoadState("ready");
       setAuthor("");
       setMessage("");
@@ -111,7 +110,21 @@ export function BabyWishes() {
       const until = Date.now() + WISH_COOLDOWN_MS;
       localStorage.setItem(WISH_COOLDOWN_KEY, String(until));
       beginCooldown(WISH_COOLDOWN_MS);
-    } catch {
+      // Realtime normally adds the new wish. This read is a quiet fallback for
+      // slow or temporarily disconnected realtime channels, and the id-based
+      // merge prevents the same wish from appearing twice.
+      void fetchApprovedWishes()
+        .then((rows) => {
+          setWishes((current) => {
+            const merged = [...rows, ...current];
+            return merged.filter((wish, index) => merged.findIndex((item) => item.id === wish.id) === index).slice(0, 50);
+          });
+        })
+        .catch(() => undefined);
+    } catch (error) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Wish submission failed", error);
+      }
       setStatus(birthData.wishes.submitError);
     } finally {
       setSubmitting(false);

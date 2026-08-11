@@ -40,18 +40,13 @@ export async function fetchApprovedWishes(): Promise<Wish[]> {
   return rows.filter(isWish);
 }
 
-export async function insertWish(input: WishInput): Promise<Wish> {
+export async function insertWish(input: WishInput): Promise<void> {
   const supabase = getSupabaseBrowserClient();
   if (!supabase) throw new Error("SUPABASE_NOT_CONFIGURED");
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("wishes")
-    .insert({ name: input.name, message: input.message })
-    .select("id,name,message,created_at")
-    .single();
+    .insert({ name: input.name, message: input.message });
   if (error) throw error;
-  const row: unknown = data;
-  if (!isWish(row)) throw new Error("INVALID_WISH_RESPONSE");
-  return row;
 }
 
 export function subscribeToWishInserts(onWish: (wish: Wish) => void): () => void {
