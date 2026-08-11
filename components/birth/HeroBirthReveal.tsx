@@ -12,6 +12,12 @@ export function HeroBirthReveal() {
   const { hero, baby } = birthData;
   return (
     <section className="hero" aria-labelledby="hero-name">
+      <div className="sky-motion" aria-hidden="true">
+        <motion.i className="sky-wash sky-wash-one" animate={{ x: [0, 45, 0], y: [0, -18, 0], opacity: [.22, .42, .22] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}/>
+        <motion.i className="sky-wash sky-wash-two" animate={{ x: [0, -38, 0], y: [0, 14, 0], opacity: [.16, .34, .16] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}/>
+        <motion.span className="sunbeam sunbeam-one" animate={{ rotate: [-6, 4, -6], opacity: [.16, .32, .16] }} transition={{ duration: 7, repeat: Infinity }}/>
+        <motion.span className="sunbeam sunbeam-two" animate={{ rotate: [8, -3, 8], opacity: [.12, .28, .12] }} transition={{ duration: 8.5, repeat: Infinity }}/>
+      </div>
       <SoftSun />
       <FloatingStars count={10} />
       <AnimatedClouds count={6} />

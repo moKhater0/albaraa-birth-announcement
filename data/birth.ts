@@ -1,5 +1,3 @@
-export type Wish = { id: string; message: string; author: string };
-
 export const birthData = {
   baby: {
     name: "البراء",
@@ -40,21 +38,38 @@ export const birthData = {
     namePlaceholder: "اسمك",
     messagePlaceholder: "اكتب كلمة حلوة للبراء",
     submit: "أرسل كلمتك",
-    success: "وصلت كلمتك الحلوة 🤍",
-    samples: [
-      { id: "sara", message: "ربنا يحفظك يا براء ويجعل أيامك كلها فرح وسعادة.", author: "خالتو سارة" },
-      { id: "ahmed", message: "اللهم اجعله من أهل القرآن ومن عبادك الصالحين.", author: "أحمد" },
-      { id: "mariam", message: "ربنا يرزقك الصحة والعافية ويبارك في عمرك.", author: "مريم" },
-    ] satisfies Wish[],
+    submitting: "جاري إرسال كلمتك…",
+    success: "وصلت كلمتك للبراء 🤍",
+    empty: "لسه مستنيين أول كلمة حلوة للبراء 🤍",
+    loading: "بنجهّز الكلمات الحلوة…",
+    loadError: "تعذر تحميل الكلمات حاليًا",
+    submitError: "معلش، تعذر إرسال كلمتك. حاول مرة تانية.",
+    retry: "حاول مرة تانية",
+    cooldown: "استنى ثواني صغيرة قبل ما تبعت كلمة تانية 🤍",
   },
   prayer: {
     title: "دعاؤنا للبراء",
     text: ["اللهم أنبته نباتًا حسنًا،", "واجعله قرة عين لأهله،", "واحفظه وبارك فيه،", "وارزقه الصحة والصلاح والسعادة."],
   },
   final: {
-    title: "نوّرت دنيتنا يا براء",
+    title: "نوّرت دنيتنا يا البراء",
     share: "شارك الفرحة",
     download: "حمّل كارت البراء",
+    madeWith: "صُنعت بكل الحب لاستقبال البراء 🤍 من",
+    qissetna: "قصتنا",
+    qissetnaWhatsapp: "https://wa.me/201030971865?text=%D8%B4%D9%81%D8%AA%20%D8%AA%D9%87%D9%86%D8%A6%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%A3%D9%84%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84",
+  },
+  downloadCard: {
+    sheetTitle: "اختار مقاس الكارت",
+    story: { label: "ستوري", size: "1080 × 1920", subtitle: "مناسب لواتساب وإنستجرام" },
+    post: { label: "بوست", size: "1080 × 1350", subtitle: "مناسب لمنشورات السوشيال" },
+    prayer: "نسألكم الدعاء له بالصلاح والعافية 🤍",
+    brandArabic: "قصتنا",
+    brandEnglish: "Qissetna",
+    downloadAction: "حمّل PNG",
+    preparing: "بنجهّز الكارت…",
+    downloaded: "تم تحميل الكارت بجودته الأصلية 🤍",
+    close: "إغلاق اختيار مقاس الكارت",
   },
   share: {
     title: "بشارة ميلاد البراء",
